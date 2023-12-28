@@ -14,8 +14,8 @@ const AboutUs = () => {
           prácticos.
         </p>
         <p>
-          Al explorar Shop Cart, te invitamos a formar parte de este logro
-          académico y a descubrir el resultado del aprendizaje.
+          Sientete libre de comprar, todo es gratis!{" "}
+          <i className="fa-regular fa-face-smile"></i>
         </p>
       </div>
     </div>

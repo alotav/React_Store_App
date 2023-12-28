@@ -11,9 +11,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* top: 30%;
-    left: 40%; */
     height: 15vh;
     padding: 3em;
 }
 
+.CardMessage i{
+    color:rgb(0, 179, 207);
+}

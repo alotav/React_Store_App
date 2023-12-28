@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: space-around;
     list-style: none;
-    /* border-bottom: var(--borderLine); */
 }
 
 .headerContainer ul a {

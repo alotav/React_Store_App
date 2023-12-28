@@ -1,25 +1,15 @@
 /* eslint-disable react/prop-types */
-// import { useContext, useState } from "react";
 import { useContext, useEffect } from "react";
 import "./Card.css";
 import CartContext from "../../context/CartContext";
 // eslint-disable-next-line no-unused-vars
 import CardMessage from "./CardMessage/CardMessage";
-// import Button from "../Button/Button";
+
 
 const Card = ({ data }) => {
   // llamamos al contexto
   const { addToCart } = useContext(CartContext);
   let { finalPrice, totalPrice, fnShowMessage } = useContext(CartContext);
-
-  // const [showMessage, setShowMessage] = useState(false);
-
-  // const fnShowMessage = () => {
-  //   setShowMessage(true);
-  //   setInterval(() => {
-  //     setShowMessage(false);
-  //   }, 1500);
-  // };
 
   // imprimimos el valor de totalprice cuando haya cambiado
   useEffect(() => {

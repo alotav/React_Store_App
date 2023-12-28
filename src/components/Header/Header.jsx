@@ -9,7 +9,6 @@ const Header = () => {
       <div className="headerContainer">
         <div>
           <div className="logo">
-            {/* <i className="fa-solid fa-shop"></i> */}
             <img src={ShopCartLogo} alt={<i className="fa-solid fa-shop"></i>}/>
             <p>ShopCart</p>
           </div>

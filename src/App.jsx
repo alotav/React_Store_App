@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header/Header";
 import ProductsSection from "./components/ProductsSection/ProductsSection";
 import CartContext from "./context/CartContext";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import Cart from "./components/Cart/Cart";
 import axios from "axios";
 import PaySection from "./components/Cart/PaymentSection/PaymentSection";
@@ -10,7 +12,6 @@ import OnSaleSection from "./components/OnSaleSection/OnSaleSection";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Footer from "./components/Footer/Footer";
 import CardMessage from "./components/Card/CardMessage/CardMessage";
-
 
 const App = () => {
   // productos
@@ -59,10 +60,9 @@ const App = () => {
 
   // metodo para vaciar carrito
   const clearCart = () => {
-    setCart([])
+    setCart([]);
     setTotalPrice(0);
   };
-
 
   const fnShowMessage = () => {
     setShowMessage(true);
@@ -108,7 +108,7 @@ const App = () => {
     <Router>
       <div>
         <Header />
-        {showMessage && <CardMessage/>}
+        {showMessage && <CardMessage />}
         {/* <CardMessage/> */}
         <CartContext.Provider
           value={{
@@ -118,18 +118,22 @@ const App = () => {
             clearCart,
             finalPrice,
             totalPrice,
-            fnShowMessage
+            fnShowMessage,
           }}
         >
           <Routes>
-            <Route path="/cart/*" element={<Cart />} />
             <Route path="/" element={<ProductsSection datos={productos} />} />
-            <Route path="/pay/*" element={<PaySection/>}/>
-            <Route path="/sale/*" element={<OnSaleSection datos={productos}/>}/>
-            <Route path="/aboutus/*" element={<AboutUs/>}/>
+
+            <Route path="/cart/*" element={<Cart />} />
+            <Route path="/pay/*" element={<PaySection />} />
+            <Route
+              path="/sale/*"
+              element={<OnSaleSection datos={productos} />}
+            />
+            <Route path="/aboutus/*" element={<AboutUs />} />
           </Routes>
         </CartContext.Provider>
-        <Footer/>
+        <Footer />
       </div>
     </Router>
   );

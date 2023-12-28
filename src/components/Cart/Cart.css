@@ -41,3 +41,10 @@
 .buyBtn {
   background-color: rgb(0, 179, 207);
 }
+
+.noProductsMessage{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3em;
+}

@@ -23,6 +23,7 @@ const Cart = () => {
             <button className="clearCartBtn" onClick={clearCart}>Vaciar Carrito</button>
             <button className="buyBtn"><Link to="/pay">Finalizar compra</Link></button>
           </div>
+          {totalPrice == 0 && <p className="noProductsMessage">Vaya! , Su carrito esta vacío.</p>}
           {cart.map((item) => (
             <CartCard key={`iqtemId-${item.id}`} data={item} />
           ))}

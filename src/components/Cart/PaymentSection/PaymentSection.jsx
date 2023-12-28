@@ -2,7 +2,8 @@ import { useNavigate } from "react-router-dom";
 import PaymentMessage from "../PaymentMessage/PaymentMessage";
 import "./PaymentSection.css";
 import creditCard from "./img/creditCard.png";
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import CartContext from "../../../context/CartContext";
 
 const PaySection = () => {
   const [messages, setMessages] = useState({
@@ -16,7 +17,8 @@ const PaySection = () => {
   const [monthValue, setMonthValue] = useState("");
   const [cvcValue, setCvcValue] = useState("");
   const [showPaymentMessage, setShowPaymentMessage] = useState(false);
-  // const [redirect, setRedirect] = useState(false)
+  const [isFormValid, setIsFormValid] = useState(false);
+
   const navigate = useNavigate();
 
   // referencias a los inputs
@@ -25,6 +27,9 @@ const PaySection = () => {
   const dayRef = useRef("");
   const monthRef = useRef("");
   const cvcRef = useRef("");
+
+  let { clearCart } = useContext(CartContext);
+
 
   const handleInputCardNumber = () => {
     console.log(cardNumberRef.current.value.length);
@@ -39,6 +44,7 @@ const PaySection = () => {
         messageCardNumber: false,
       }));
     }
+    checkFormValidity();
   };
 
   const handleInputName = () => {
@@ -53,6 +59,7 @@ const PaySection = () => {
     } else {
       setMessages((prevMessages) => ({ ...prevMessages, messageName: false }));
     }
+    checkFormValidity();
   };
 
   const handleDay = () => {
@@ -61,6 +68,7 @@ const PaySection = () => {
       setDayValue("");
       dayRef.current.value = dayValue;
     }
+    checkFormValidity();
   };
 
   const handleMonth = () => {
@@ -69,6 +77,7 @@ const PaySection = () => {
       setMonthValue("");
       monthRef.current.value = monthValue;
     }
+    checkFormValidity();
   };
 
   const handleCvc = () => {
@@ -81,6 +90,7 @@ const PaySection = () => {
       setCvcValue("");
       cvcRef.current.value = cvcValue;
     }
+    checkFormValidity();
   };
 
   const handleSubmit = (e) => {
@@ -95,10 +105,28 @@ const PaySection = () => {
       !messages.messageCvc
     ) {
       setShowPaymentMessage(true);
+      clearCart();
       setTimeout(() => {
         setShowPaymentMessage(false);
         navigate("/");
       }, 2500);
+    }
+    checkFormValidity();
+  };
+
+  const checkFormValidity = () => {
+    // Verifica si todos los campos están llenos correctamente
+    if (
+      cardNumberRef.current.value.length > 16 &&
+      nameRef.current.value.length > 8 &&
+      // Agrega las condiciones adicionales para los otros campos según sea necesario
+      dayRef.current.value > 1 &&
+      monthRef.current.value > 1 &&
+      cvcRef.current.value.length === 3
+    ) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
     }
   };
 
@@ -165,9 +193,19 @@ const PaySection = () => {
           />
           <p></p>
 
-          <button type="submit" onClick={handlePayment}>
-            Finalizar Compra
+          <button
+            type="submit"
+            onClick={handlePayment}
+            disabled={!isFormValid}
+            style={{
+              backgroundColor: isFormValid ? "#28a745" : "gray",
+              color: isFormValid ? "#ffffff" : "#6c757d",
+            }}
+          >
+            Realizar pago
           </button>
+
+          
         </form>
       </div>
       {showPaymentMessage && <PaymentMessage />}
