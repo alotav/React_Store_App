@@ -32,3 +32,17 @@
 .cartCard button{
     color: black;
 }
+
+.btnMasMenos button{
+    margin: 3px;
+    border: 1px solid gray;
+}
+
+@media (width < 650px) {
+    .btnMasMenos div{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }

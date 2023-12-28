@@ -14,3 +14,16 @@
     flex-flow: column;
     width: 50%;
 }
+
+
+@media(width < 900px){
+    .aboutus div{
+        width: 80%;
+    }
+}
+
+@media(width < 600px){
+    .aboutus div{
+        width: 100%;
+    }
+}

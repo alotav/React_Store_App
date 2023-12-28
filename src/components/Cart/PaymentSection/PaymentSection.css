@@ -28,7 +28,7 @@
 .paysection form {
   display: flex;
   flex-flow: column;
-  width: 50%;
+  width: 60%;
   align-items: center;
 }
 .paysection input{
@@ -90,4 +90,23 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+@media(width < 1024px){ 
+  .paysection form {
+    width: 80%;
+  }
+}
+@media(width < 700px){ 
+
+  .paySectionContainer{
+    width: 100%;
+  }
+  .paysection{
+    width: 80%;
+    padding: 2em 0;
+  }
+  .paysection form {
+    width: 100%;
+  } 
 }

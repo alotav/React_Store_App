@@ -10,24 +10,26 @@ const CartCards = ({ data }) => {
     <div className="cartCard">
       <img src={data.image} alt="image" />
       <p>{data.title}</p>
-      <div>
-        <button
-          onClick={() => {
-            addToCart(data);
-            finalPrice(data.cantidad, data.price, "+");
-          }}
-        >
-          +
-        </button>
-        <p>x{data.cantidad}</p>
-        <button
-          onClick={() => {
-            removeItemFromCart(data);
-            finalPrice(data.cantidad, data.price, "-")
-          }}
-        >
-          -
-        </button>
+      <div className="btnMasMenos">
+        <div>
+          <button
+            onClick={() => {
+              addToCart(data);
+              finalPrice(data.cantidad, data.price, "+");
+            }}
+          >
+            +
+          </button>
+          <p>x{data.cantidad}</p>
+          <button
+            onClick={() => {
+              removeItemFromCart(data);
+              finalPrice(data.cantidad, data.price, "-");
+            }}
+          >
+            -
+          </button>
+        </div>
       </div>
       <p>Precio ${(data.price * data.cantidad).toFixed(2)}</p>
     </div>
